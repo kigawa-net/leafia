@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="leafia-prot-domain-js-dev">
+    <output-path>$PROJECT_DIR$/leafia-prot/leafia-prot-domain/build/libs</output-path>
+    <root id="archive" name="leafia-prot-domain-js-dev.jar">
+      <element id="module-output" name="leafia.leafia-prot.leafia-prot-domain.jsMain" />
+    </root>
+  </artifact>
+</component>
