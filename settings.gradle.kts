@@ -51,11 +51,3 @@ includeDsl {
 }
 
 
-sourceControl {
-    gitRepository(uri("https://github.com/kigawa-net/kodel.git")) {
-        producesModule("net.kigawa.kodel:core")
-        producesModule("net.kigawa.kodel:api")
-        producesModule("net.kigawa.kodel:coroutine")
-        producesModule("net.kigawa.kodel:kutil")
-    }
-}
