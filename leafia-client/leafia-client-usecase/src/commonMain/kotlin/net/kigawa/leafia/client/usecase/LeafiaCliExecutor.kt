@@ -1,12 +1,14 @@
 package net.kigawa.leafia.client.usecase
 
-import net.kigawa.leafia.client.domain.command.RawCommandArgs
 import net.kigawa.leafia.client.domain.LeafiaCli
+import net.kigawa.leafia.client.domain.command.arg.RawCommand
+import net.kigawa.leafia.client.usecase.command.leafia.LeafiaCommandParser
 
-class LeafiaCliExecutor {
-    private val commandArgsParser = CommandArgsParser()
-    fun execute(leafiaCli: LeafiaCli, rawCommandArgs: RawCommandArgs) {
-        val commandExecutor = commandArgsParser.parse(leafiaCli,rawCommandArgs)
-        commandExecutor.execute()
+class LeafiaCliExecutor(
+    leafiaCli: LeafiaCli,
+) {
+    private val leafiaCommandParser = LeafiaCommandParser(leafiaCli.leafiaCommandDefine)
+    fun execute(rawCommand: RawCommand) {
+        leafiaCommandParser.parse(rawCommand.args)
     }
 }

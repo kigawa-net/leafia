@@ -1,4 +1,4 @@
-package net.kigawa.leafia.client.domain.command
+package net.kigawa.leafia.client.domain.command.define
 
 interface CommandName {
     fun isMatch(arg: String): Boolean

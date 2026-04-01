@@ -6,6 +6,7 @@ kotlin {
         commonMain {
             dependencies {
                 api("net.kigawa.kodel:kodel-domain:${Version.KODEL}")
+                api("net.kigawa.kodel:api:${Version.KODEL}")
             }
         }
     }
