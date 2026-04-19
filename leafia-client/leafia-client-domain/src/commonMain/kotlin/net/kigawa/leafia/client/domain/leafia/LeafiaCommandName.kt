@@ -1,4 +1,4 @@
-package net.kigawa.leafia.client.domain.command.leafia
+package net.kigawa.leafia.client.domain.leafia
 
 import net.kigawa.leafia.client.domain.command.define.CommandName
 

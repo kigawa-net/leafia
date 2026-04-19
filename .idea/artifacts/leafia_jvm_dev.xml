@@ -1,8 +1,6 @@
 <component name="ArtifactManager">
   <artifact type="jar" name="leafia-jvm-dev">
     <output-path>$PROJECT_DIR$/build/libs</output-path>
-    <root id="archive" name="leafia-jvm-dev.jar">
-      <element id="module-output" name="leafia.jvmMain" />
-    </root>
+    <root id="archive" name="leafia-jvm-dev.jar" />
   </artifact>
 </component>
