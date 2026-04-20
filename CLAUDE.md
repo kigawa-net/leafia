@@ -73,6 +73,22 @@ companion object {
 }
 ```
 
+## System Architecture (CD Tool)
+
+`push` コマンドのシーケンス（`state receive`/`state send` は job コンテナ内から呼ばれる）:
+
+1. CLI が `leafia.yml` をサーバーに送信
+2. CLI がファイルハッシュを計算・送信
+3. サーバーが k8s に cache PVC を確保し、プロジェクトをロック
+4. サーバーが差分ファイルリストを返す → CLI が変更ファイルを送信
+5. サーバーが PVC にファイル差分を適用し、k8s Job を作成
+6. Job が `state receive` でサーバーから `state.yml` を取得
+7. Job が `deploy` を実行（実際のデプロイ）
+8. Job が `state send` で更新した `state.yml` をサーバーに送信
+9. サーバーが PVC ロックを解除
+
+`CommandExecutor.execute()` がコマンドの実際の処理を担う。`Res<Unit, CommandErr>` を返し、エラーは `LeafiaCliExecutor` でスタックトレースを出力。
+
 ## Dependencies
 
 External library: `net.kigawa.kodel:kodel-domain` and `net.kigawa.kodel:api` at version `5.0.1` (managed in `buildSrc/src/main/kotlin/Version.kt`). This library provides `CircularRouteGroup` (base for `ParentCommandRoute`) and `Res<T, E>`.

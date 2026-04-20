@@ -3,6 +3,7 @@ package net.kigawa.leafia.client.usecase
 import net.kigawa.leafia.client.domain.LeafiaCli
 import net.kigawa.leafia.client.domain.command.arg.RawCommand
 import net.kigawa.leafia.client.domain.leafia.LeafiaCommandRoutes
+import net.kigawa.leafia.client.domain.unwrap
 import net.kigawa.leafia.client.usecase.command.RawCommandArgsParser
 import net.kigawa.leafia.client.usecase.command.leafia.LeafiaCommandParser
 import net.kigawa.leafia.client.usecase.command.option.RawCommandOptionParser
@@ -21,6 +22,11 @@ class LeafiaCliExecutor(
         commandArgsParser.parse(
             leafiaCommandRoutes, rawCommand.args, emptyList(),
             leafiaCommandParser,
-        )
+        ).unwrap {
+            it.printStackTrace()
+            return
+        }.execute().unwrap {
+            it.printStackTrace()
+        }
     }
 }
