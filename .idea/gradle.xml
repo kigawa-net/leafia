@@ -27,6 +27,7 @@
             <option value="$PROJECT_DIR$/leafia-prot/leafia-prot-domain" />
             <option value="$PROJECT_DIR$/leafia-server" />
             <option value="$PROJECT_DIR$/leafia-server/leafia-server-domain" />
+            <option value="$PROJECT_DIR$/leafia-server/leafia-server-usecase" />
           </set>
         </option>
       </GradleProjectSettings>
