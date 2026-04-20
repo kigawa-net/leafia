@@ -65,8 +65,9 @@ class RawCommandArgsParser(
         }
         var args = parsed.args
         val values = parsed.values
-        val subCommandName = commandArgs.firstOrNull() ?: return commandParser.parseSubCommand(
-            null, args, parentOptionParsers, values
+        val options = parsed.options
+        val subCommandName = args.firstOrNull() ?: return commandParser.parseSubCommand(
+            null, args, parentOptionParsers, values, options
         )
         args = args.drop(1)
         val commandDefine = commandRoutes.routes
@@ -74,7 +75,7 @@ class RawCommandArgsParser(
 
         return commandParser
             .parseSubCommand(
-                commandDefine, args, parentOptionParsers + commandParser.optionParser, values
+                commandDefine, args, parentOptionParsers + commandParser.optionParser, values, options
             )
     }
 
@@ -90,6 +91,6 @@ class RawCommandArgsParser(
             is Res.Ok -> r.value
             is Res.Err -> return r.err.err()
         }
-        return commandParser.parseCommand(parentOptionParsers, parsed.values)
+        return commandParser.parseCommand(parentOptionParsers, parsed.values + parsed.args, parsed.options)
     }
 }

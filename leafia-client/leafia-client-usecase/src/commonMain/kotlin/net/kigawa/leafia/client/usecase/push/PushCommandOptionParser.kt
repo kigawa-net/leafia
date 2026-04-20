@@ -16,7 +16,7 @@ class PushCommandOptionParser(
     override fun parse(
         commandOptionDefine: CommandOptionDefine<PushCommandOptionName>,
         args: List<String>,
-    ): CommandOption {
-        TODO("Not yet implemented")
+    ): CommandOption = when (commandOptionDefine.name) {
+        PushCommandOptionName.F -> PushFOption
     }
 }

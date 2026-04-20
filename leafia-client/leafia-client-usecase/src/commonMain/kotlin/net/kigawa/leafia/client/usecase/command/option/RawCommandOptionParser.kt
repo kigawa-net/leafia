@@ -17,7 +17,7 @@ class RawCommandOptionParser {
         loop@ while (mtArgs.firstOrNull()?.startsWith("-") ?: false) {
             val option = mtArgs.first()
             commandOptionParsers.reversed().forEach { commandOptionParser ->
-                parseSingle(commandOptionParser, option, mtArgs)?.unwrap {
+                parseSingle(commandOptionParser, option, mtArgs.drop(1))?.unwrap {
                     return it.err()
                 }?.let {
                     mtArgs = it.args
